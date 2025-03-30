@@ -1,0 +1,57 @@
+<div class="main-bg py-5">
+  <div class="container mt-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h4 class="text-primary mb-4">Listado de Pacientes</h4>
+
+        <!-- Filtros de búsqueda -->
+        <div class="row g-2 mb-4">
+          <div class="col-md-6">
+            <input type="text" class="form-control rounded-pill" placeholder="Buscar por nombre..."
+                   [(ngModel)]="nameFilter" (ngModelChange)="onSearchChange()">
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control rounded-pill" placeholder="Buscar por enfermedad..."
+                   [(ngModel)]="diseaseFilter" (ngModelChange)="onSearchChange()">
+          </div>
+        </div>
+
+        <!-- Spinner de carga -->
+        <div *ngIf="loading" class="text-center my-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+
+        <!-- Tabla -->
+        <div class="table-responsive">
+          <table *ngIf="!loading" class="table table-hover align-middle text-center">
+            <thead class="table-light sticky-top">
+              <tr>
+                <th>Nombre</th>
+                <th>Cédula</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Enfermedad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let patient of patients">
+                <td class="fw-semibold">{{ patient.name }}</td>
+                <td>{{ patient.document }}</td>
+                <td><a href="mailto:{{ patient.email }}" class="text-decoration-none">{{ patient.email }}</a></td>
+                <td>{{ patient.phone }}</td>
+                <td>
+                  <span class="badge bg-info text-dark rounded-pill px-3 py-2">{{ patient.disease }}</span>
+                </td>
+              </tr>
+              <tr *ngIf="patients.length === 0">
+                <td colspan="5" class="text-muted">No se encontraron pacientes con esos criterios.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
