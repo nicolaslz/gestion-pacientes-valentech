@@ -1,3 +1,4 @@
+# Se ejecuta en cada push a dev y master, y en cada pull request a master
 name: CI Pipeline
 
 on:
