@@ -1,0 +1,25 @@
+.navbar {
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+
+    &.active,
+    &:hover {
+      color: #dbeafe !important;
+    }
+  }
+
+  .navbar-brand {
+    font-size: 1.4rem;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+  }
+
+  .navbar-toggler {
+    border: none;
+  }
+}
